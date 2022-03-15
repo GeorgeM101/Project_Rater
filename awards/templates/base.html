@@ -6,7 +6,7 @@
     {% if title %}
     <title>{{title}}</title>
     {% else %}
-    <title>Awwwards-Project Rater</title>
+    <title>Project Rater- Awwards</title>
     {% endif %} {% block styles %}
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,12 +34,11 @@
     />
 
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
     <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
   </head>
 
   <body>
-    {% include 'navbar.html' %} {% block content %} {% endblock %}
+    {% block content %} {% endblock %}
     <!-- MDB -->
     <script
       type="text/javascript"

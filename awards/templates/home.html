@@ -1,0 +1,91 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="carousel-inner">
+  <div class="landingpage">
+    <img
+      src="{% static '/images/sa_pixar_virtualbg_ratatouille_16x9_635a16bd.webp' %}"
+      class="landingpage-img"
+    />
+    <div class="time">
+      <p><span class="bold">Site of the day </span></p>
+    </div>
+
+    <div class="header">
+      <a href="" style="color: white; text-decoration: none">
+        <h1></h1>
+      </a>
+    </div>
+    <div class="page-body">
+      <p>
+        BY <span style="color: #49c5b6; text-transform: uppercase"></span> FROM
+        <span class="bold"></span> WITH 0.75
+      </p>
+    </div>
+
+    <div class="middle" style="font-family: 'Rubik Beastly', cursive">
+      <div class="circle" id="circle-a">
+        <strong></strong>
+        <p class="rating">DESIGN</p>
+      </div>
+      <div class="circle" id="circle-b">
+        <strong></strong>
+        <p class="rating">USABILITY</p>
+      </div>
+      <div class="circle" id="circle-c">
+        <strong></strong>
+        <p class="rating">CREATIVITY</p>
+      </div>
+      <div class="circle" id="circle-d">
+        <strong></strong>
+        <p class="rating">CONTENT</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row mt-5">
+    {% for award in awards %}
+    <div class="col-md-3">
+      <div class="card">
+        <div
+          class="bg-image hover-overlay ripple"
+          data-mdb-ripple-color="light"
+        >
+          <img src="{{ award.image.url }}" class="img-fluid" />
+          <a href="#!">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ award.title }}</h5>
+
+          {% if user.id == award.user.id %}
+          <a
+            href="/delete/{{ award.id }}"
+            type="button"
+            class="btn btn-outline-danger btn-sm"
+            >Delete</a
+          >
+          {% endif %}
+
+          <p class="card-text">{{ award.description }}</p>
+          published:{{ award.created_date|date:"M d, Y" }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
+></script>
+
+<script></script>
+{% endblock %}
