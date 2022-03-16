@@ -36,7 +36,7 @@ def register(request):
                 messages.add_message(request, messages.SUCCESS, 'Saved successfully!')
                 return redirect(user_login)
     else:
-        return render(request, "wards/register.html")
+        return render(request, "registration/register.html")
 
 def user_login(request):
      if request.method=="POST":
@@ -50,4 +50,4 @@ def user_login(request):
             messages.add_message(request, messages.ERROR, 'Invalid Credentials!')
             return redirect(user_login)
      else:
-        return render(request, "wards/login.html")
+        return render(request, "registration/login.html")
