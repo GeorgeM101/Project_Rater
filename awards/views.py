@@ -100,7 +100,7 @@ def register(request):
         
         return redirect('login')
     else:
-        return render(request,'registration/registration_form.html')
+        return render(request,'registration/register.html')
 
 
 
