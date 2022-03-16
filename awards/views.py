@@ -3,7 +3,7 @@ from .models import Project,User
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth import authenticate,login as signin
 
 
 # Create your views here.
@@ -37,3 +37,17 @@ def register(request):
                 return redirect(user_login)
     else:
         return render(request, "wards/register.html")
+
+def user_login(request):
+     if request.method=="POST":
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+        user= authenticate(email=email, password=password)
+        if user is not None:
+            signin(request,user )
+            return redirect(index)
+        else:
+            messages.add_message(request, messages.ERROR, 'Invalid Credentials!')
+            return redirect(user_login)
+     else:
+        return render(request, "wards/login.html")
