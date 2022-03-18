@@ -23,6 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('awards.urls')),
     path('login/', views.LoginView.as_view(template_name='registration/login.html'), name='login'),
-    path('^logout/$', views.LogoutView.as_view(template_name='awardss/home.html'), {"next_page": '/'}),
+    path('logout/', views.LogoutView.as_view(template_name='awwards/home.html'), {"next_page": '/'}),
 
 ]

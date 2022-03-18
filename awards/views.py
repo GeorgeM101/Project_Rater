@@ -71,7 +71,6 @@ def rate_project(request,id):
     }
     return render(request, 'awwards/project.html', params)
 
-    # return render(request,"awwards/project.html",{"project":project})
 
 @login_required(login_url='/accounts/login/') 
 def view_profile(request):

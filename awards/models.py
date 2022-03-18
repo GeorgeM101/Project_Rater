@@ -45,3 +45,7 @@ class Rating(models.Model):
     overall_score = models.IntegerField(blank=True,default=0)
     project = models.ForeignKey(Project,on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+
+    def save_rating(self):
+        self.save()
+    
