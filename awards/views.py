@@ -7,9 +7,12 @@ from .forms import NewProjectForm,ProfileUpdateForm,RatingsForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login as signin,logout as signout
 from rest_framework import status
 from rest_framework.response import Response
 from django.http import JsonResponse
+from django.contrib import messages
+
 
 
 from rest_framework.views import APIView
@@ -102,6 +105,19 @@ def register(request):
     else:
         return render(request,'registration/register.html')
 
+def user_login(request):
+     if request.method=="POST":
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+        user= authenticate(email=email, password=password)
+        if user is not None:
+            signin(request,user )
+            return redirect(home)
+        else:
+            messages.add_message(request, messages.ERROR, 'Invalid Credentials!')
+            return redirect(user_login)
+     else:
+        return render(request, "regist/login.html")
 
 
 @login_required(login_url='/accounts/login/') 

@@ -14,7 +14,7 @@ urlpatterns=[
     path('awwardsapi/api/project/', views.ProjectList.as_view(),name='api-project'),
     path('awwardsapi/',views.api_page,name='api-page'),
     path('register/',views.register, name='register'),
-    # path('ratings/', include('star_ratings.urls', namespace='ratings')),
+    path('user_login/', views.user_login, name='login')
 
   
 ]
